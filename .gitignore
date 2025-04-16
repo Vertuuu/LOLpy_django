@@ -16,6 +16,7 @@ instance
 .mypy_cache
 .tox
 .venv
+venv
 .eggs
 .nox
 .coverage
