@@ -1,0 +1,58 @@
+.champion_name {
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+    font-variant: small-caps;
+}
+.champion_icon, .champion_link {
+    width: 150px;
+    height: 150px;
+    margin: 0px;
+}
+#champions_modal {
+    p {
+        font-size: 25px;
+        text-align: center;
+        width: 70%;
+    }
+    min-width: 800px;
+    width: 80%;
+    margin: 0px 0px 10% 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px 10px rgba(255, 255, 255, 0.349);
+    border-radius: 21px;
+}
+.champion_card {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0px 0px 0px;
+    h4 {
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+.champion_card:hover {
+    .champion_link {
+        transition: all 0.4s ease;
+        border-radius: 100px;
+        transform: scale(1.25);
+        box-shadow: 0px 0px 100px 10px rgb(64, 49, 97);
+    }
+    
+    .champion_icon {
+        transition: all 0.4s ease;
+        border-radius: 100px;
+    }
+    .champion_name {
+        transition: all 0.4s ease;
+        color: rgba(255, 255, 255, 0);
+    }    
+}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/champions.css' %}">
+        <title>LOLpy - Champions</title>
+    </head>
+    <body>
+        <header id="page_header">
+            <img id="logo" src="{% static 'images/assets/LOL.png' %}" alt="LOLpy logo">
+            <h1>LOLpy</h1>
+        </header>
+        <main>
+            <div id="champions_modal">
+                <header id="content_header">
+                    <h2>Champions</h2>
+                    <h3>Click on a champion to get more information about them!</h3>
+                </header>
+                {% for champion in champions %} 
+                <div class="champion_card">
+                    <a class="champion_link" href="" target="_blank">
+                        <img class="champion_icon" src="{{ champion.icon_path}}" alt="{{champion.key} icon}">
+                    </a>
+                    <h4 class="champion_name">{{champion.key}}</h4>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+    </body>
+</html>
