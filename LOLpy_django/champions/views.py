@@ -9,10 +9,12 @@ def champions(request):
     for champion in all_champions:
         champion = Champion(champion)
         key = champion.get_champion_key()
+        name = champion.get_champion_name()
         title = champion.get_champion_title()
         source = ChampionImages(key,  region="en-US").get_icon_source()
         champion_data = {
             "key": key,
+            "name": name,
             "title": title,
             "icon_path": source
             }
