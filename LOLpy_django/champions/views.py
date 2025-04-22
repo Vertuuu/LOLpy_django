@@ -24,3 +24,27 @@ def champions(request):
     }
     template = loader.get_template('champions.html')
     return HttpResponse(template.render(context=context))
+
+def champion(request, key):
+    champion = Champion(key)
+    name = champion.get_champion_name()
+    title = champion.get_champion_title()
+    bio = champion.get_champion_lore()
+    lanes = champion.get_champion_lanes()
+    images = ChampionImages(key)
+    images = images.get_all_champion_images_sources()
+    icon = images[0]
+    loading = images[1]
+    splash = images[2]
+
+    context = {
+        'key': key,
+        'name': name,
+        'title': title,
+        'bio': bio,
+        'lanes': lanes,
+        'icon': icon,
+        'loading': loading,
+        'splash': splash        
+    }
+    return render(request, template_name='champion.html', context=context)
