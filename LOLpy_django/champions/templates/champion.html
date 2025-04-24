@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/champion.css' %}">
+        <link rel="icon" type="image/x-icon" href="{{ icon }}">
+        <title>LOLpy - {{name}}</title>
+    </head>
+    <body>
+        <header id="page_header">
+            <a href="/home"><img id="logo" src="{% static 'images/assets/LOL.png' %}" alt="LOLpy logo"></a>
+            <h1>LOLpy</h1>
+        </header>
+        <main>
+            <div id="champions_modal">
+                <header id="content_header">
+                    <div id="champion_attack" class="champion_headers">
+                        <div id="champion_resource">
+                            <h2>Resource:</h2>
+                            <h3>{{ resource }}</h3>
+                        </div>
+                        <div id="champion_range">
+                            <h2>Range:</h2>
+                            <h3>{{ range }}</h3>
+                        </div>
+                    </div>
+                    <div id="champion_icon" class="champion_headers">
+                        <img id="icon_img" src="{{ icon }}" alt="{{name}} icon">
+                        <div id="champion_title">
+                            <h2>{{ name }}</h2>
+                            <h3>{{ title }}</h3>
+                        </div>
+                    </div>
+                    <div id="champion_lanes" class="champion_headers">
+                        <h2>Lanes:</h2>
+                        <div id="lanes">
+                            {% for lane in lanes %} 
+                                <img class="lane_img" src="{% static 'images/assets/' %}{{ lane }}.png" alt="{{ lane }} icon">
+                            {% endfor %}
+                        </div>
+                        
+                    </div>             
+                </header>
+                <div id="champion_bio" style="background-image: url('{{ splash }}');">
+                    <h2 class="lore_header">{{ name }}'s lore:</h2>
+                    <p class="lore">{{ bio }}</p>
+                </div>
+                <div id="champion_abilities">
+                    <h2 class="abilities_header">{{ name }}'s Abilities:</h2>
+                    <div id="abilities_container">
+                        <div class="ability" data-description="{{ P_desc }}">
+                            <h3 class="ability_btn">Passive</h3>
+                            <img class="ability_img" src="{{ P_source }}" alt="{{ P_name }} icon">
+                            <h3 class="ability_name">{{ P_name }}</h3>
+                        </div>
+                        <div class="ability" data-description="{{ Q_desc }}">
+                            <h3 class="ability_btn">Q</h3>
+                            <img class="ability_img" src="{{ Q_source }}" alt="{{ Q_name }} icon">
+                            <h3 class="ability_name">{{ Q_name }}</h3>
+                        </div>
+                        <div class="ability" data-description="{{ W_desc }}">
+                            <h3 class="ability_btn">W</h3>
+                            <img class="ability_img" src="{{ W_source }}" alt="{{ W_name }} icon">
+                            <h3 class="ability_name">{{ W_name }}</h3>
+                        </div>
+                        <div class="ability" data-description="{{ E_desc }}">
+                            <h3 class="ability_btn">E</h3>
+                            <img class="ability_img" src="{{ E_source }}" alt="{{ E_name }} icon">
+                            <h3 class="ability_name">{{ E_name }}</h3>
+                        </div>
+                        <div class="ability" data-description="{{ R_desc }}">
+                            <h3 class="ability_btn">R</h3>
+                            <img class="ability_img" src="{{ R_source }}" alt="{{ R_name }} icon">
+                            <h3 class="ability_name">{{ R_name }}</h3>
+                        </div>
+                    </div>
+                    <div id="abilities_description">
+                        <h2 class="description_header">Description:</h2>
+                        <p id="ability_description" class="description">Click on an ability to see its description.</p>
+                    </div>
+                    <script>
+                        const abilities = document.querySelectorAll('.ability');
+                        const description = document.getElementById('ability_description');
+
+                        abilities.forEach(ability => {
+                            ability.addEventListener('click', () => {
+                                abilities.forEach(ability => {
+                                    ability.classList.remove('active');
+                                });
+                                ability.classList.add('active');
+                                const desc = ability.getAttribute('data-description');
+                                description.textContent = desc;
+                            });
+                        });
+                    </script>
+            </div>
+        </main>
+    </body>
+</html>
+
