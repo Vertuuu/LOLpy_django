@@ -31,6 +31,31 @@ def champion(request, key):
     title = champion.get_champion_title()
     bio = champion.get_champion_lore()
     lanes = champion.get_champion_lanes()
+    resource = champion.get_champion_resource()
+    range = champion.get_champion_range()
+
+    abilites_names = champion.get_abilities_names()
+    P_name = abilites_names["P"]
+    Q_name = abilites_names["Q"]
+    W_name = abilites_names["W"]
+    E_name = abilites_names["E"]
+    R_name = abilites_names["R"]
+
+    abilites_sources = champion.get_abilities_sources()
+    P_source = abilites_sources["P"]
+    Q_source = abilites_sources["Q"]
+    W_source = abilites_sources["W"]
+    E_source = abilites_sources["E"]
+    R_source = abilites_sources["R"]
+
+    abilites_descs = champion.get_abilities_description()
+    P_desc = abilites_descs["P"]
+    Q_desc = abilites_descs["Q"]
+    W_desc = abilites_descs["W"]
+    E_desc = abilites_descs["E"]
+    R_desc = abilites_descs["R"]
+
+    
     images = ChampionImages(key)
     images = images.get_all_champion_images_sources()
     icon = images[0]
@@ -43,6 +68,23 @@ def champion(request, key):
         'title': title,
         'bio': bio,
         'lanes': lanes,
+        'resource': resource,
+        'range': range,
+        'P_name': P_name,
+        'Q_name': Q_name,
+        'W_name': W_name,
+        'E_name': E_name,
+        'R_name': R_name,
+        'P_source': P_source,
+        'Q_source': Q_source,
+        'W_source': W_source,
+        'E_source': E_source,
+        'R_source': R_source,
+        'P_desc': P_desc,
+        'Q_desc': Q_desc,
+        'W_desc': W_desc,
+        'E_desc': E_desc,
+        'R_desc': R_desc,
         'icon': icon,
         'loading': loading,
         'splash': splash        
